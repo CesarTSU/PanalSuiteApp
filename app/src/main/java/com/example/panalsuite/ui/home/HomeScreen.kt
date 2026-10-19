@@ -56,7 +56,7 @@ fun HomeScreen(
         modifier = Modifier.fillMaxSize(),
         topBar = {
             TopAppBar(
-                title = { Text("PanalSuite") },
+                title = { Text("PanalSuite", fontWeight = FontWeight.Bold) },
                 actions = { TextButton(onClick = onLogout, modifier = Modifier.heightIn(min = 48.dp)) { Text("Salir") } },
             )
         },
@@ -93,29 +93,60 @@ fun HomeScreen(
                 }
                 if (caps.canCreate) {
                     item {
-                        Button(onClick = onCreate, shape = MaterialTheme.shapes.medium, modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) {
-                            Text("Nueva solicitud")
+                        Button(
+                            onClick = onCreate,
+                            shape = MaterialTheme.shapes.medium,
+                            modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)
+                        ) {
+                            Text("Nueva solicitud", style = MaterialTheme.typography.titleMedium)
                         }
                     }
                 }
                 if (caps.canViewTickets) {
                     item {
-                        OutlinedButton(onClick = { onOpenList("ALL") }, shape = MaterialTheme.shapes.medium, modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) {
-                            Text(caps.ticketsLabel)
+                        OutlinedButton(
+                            onClick = { onOpenList("ALL") },
+                            shape = MaterialTheme.shapes.medium,
+                            border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary),
+                            modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)
+                        ) {
+                            Text(
+                                text = caps.ticketsLabel,
+                                color = MaterialTheme.colorScheme.primary,
+                                style = MaterialTheme.typography.titleMedium
+                            )
                         }
                     }
                 }
                 if (caps.canViewWorkload) {
                     item {
-                        OutlinedButton(onClick = onWorkload, shape = MaterialTheme.shapes.medium, modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) {
-                            Text("Cargas de trabajo")
+                        OutlinedButton(
+                            onClick = onWorkload,
+                            shape = MaterialTheme.shapes.medium,
+                            border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary),
+                            modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)
+                        ) {
+                            Text(
+                                text = "Cargas de trabajo",
+                                color = MaterialTheme.colorScheme.primary,
+                                style = MaterialTheme.typography.titleMedium
+                            )
                         }
                     }
                 }
                 if (caps.canAdminister) {
                     item {
-                        OutlinedButton(onClick = onAdmin, shape = MaterialTheme.shapes.medium, modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) {
-                            Text("Administración (simulada)")
+                        OutlinedButton(
+                            onClick = onAdmin,
+                            shape = MaterialTheme.shapes.medium,
+                            border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary),
+                            modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)
+                        ) {
+                            Text(
+                                text = "Administración (simulada)",
+                                color = MaterialTheme.colorScheme.primary,
+                                style = MaterialTheme.typography.titleMedium
+                            )
                         }
                     }
                 }
@@ -151,4 +182,3 @@ private fun SummaryCard(count: Int, label: String, accent: Color, modifier: Modi
         Card(modifier = semanticModifier, shape = MaterialTheme.shapes.large, colors = colors, border = border, content = content)
     }
 }
-

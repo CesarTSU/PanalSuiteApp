@@ -168,8 +168,8 @@ fun LoginScreen(viewModel: LoginViewModel, onLoggedIn: () -> Unit) {
                             text = buildAnnotatedString {
                                 withStyle(
                                     style = SpanStyle(
-                                        fontWeight = FontWeight.ExtraBold, // Peso mucho más fuerte
-                                        color = MaterialTheme.colorScheme.onSurface // Color más oscuro que el resto
+                                        fontWeight = FontWeight.ExtraBold,
+                                        color = MaterialTheme.colorScheme.onSurface
                                     )
                                 ) {
                                     append("Usuarios: ")
@@ -189,7 +189,7 @@ fun LoginScreen(viewModel: LoginViewModel, onLoggedIn: () -> Unit) {
                                 append("Son datos ficticios en memoria; no hay servidor ni seguridad real.")
                             },
                             style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant, // El texto normal será más gris/claro
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
                         )
                     }
                 }
