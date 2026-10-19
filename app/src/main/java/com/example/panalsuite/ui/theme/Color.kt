@@ -24,8 +24,8 @@ val Mist400 = Color(0xFFB9B9C7)
 val Mist500 = Color(0xFFAEAEBE)
 
 // Morados a rosados
-val Violet700 = Color(0xFF5B3FC4)
-val Violet500 = Color(0xFF7C5CFC)
+val Violet700 = Color(0xFF03A9F4)
+val Violet500 = Color(0xFF03A9F4)
 val Violet300 = Color(0xFFB9A6FF)
 val Violet100 = Color(0xFFE9E2FF)
 val Pink500 = Color(0xFFE0589B)
