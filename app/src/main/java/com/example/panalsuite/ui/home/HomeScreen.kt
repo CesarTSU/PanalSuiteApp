@@ -46,7 +46,8 @@ import com.example.panalsuite.ui.components.UiStateContent
 import com.example.panalsuite.ui.theme.InProgressColor
 import com.example.panalsuite.ui.theme.PendingColor
 import com.example.panalsuite.ui.theme.ResolvedColor
-
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Surface
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
@@ -130,40 +131,52 @@ fun HomeScreen(
                     }
                 }
 
-                // Barra de navegación inferior
-                NavigationBar {
-                    NavigationBarItem(
-                        icon = { Icon(Icons.Filled.Home, contentDescription = "Inicio") },
-                        label = { Text("Inicio") },
-                        selected = true,
-                        onClick = { /* Ya estamos en el inicio */ }
-                    )
-
-                    if (caps.canViewTickets) {
+                Surface(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 24.dp, vertical = 24.dp), // Despega la barra de los lados y de abajo
+                    shape = RoundedCornerShape(100), // Hace que los bordes sean completamente redondos (píldora)
+                    shadowElevation = 12.dp, // Proyecta la sombra que le da el efecto de levitar
+                    color = MaterialTheme.colorScheme.surfaceVariant
+                ) {
+                    NavigationBar(
+                        containerColor = Color.Transparent, // Transparente para que tome el color y forma del Surface
+                        tonalElevation = 0.dp,
+                        modifier = Modifier.heightIn(min = 64.dp)
+                    ) {
                         NavigationBarItem(
-                            icon = { Icon(Icons.AutoMirrored.Filled.List, contentDescription = "Tickets") },
-                            label = { Text("Tickets") },
-                            selected = false,
-                            onClick = { onOpenList("ALL") }
+                            icon = { Icon(Icons.Filled.Home, contentDescription = "Inicio") },
+                            label = { Text("Inicio") },
+                            selected = true,
+                            onClick = { /* Ya estamos en el inicio */ }
                         )
-                    }
 
-                    if (caps.canViewWorkload) {
-                        NavigationBarItem(
-                            icon = { Icon(Icons.Filled.DateRange, contentDescription = "Cargas") },
-                            label = { Text("Cargas") },
-                            selected = false,
-                            onClick = onWorkload
-                        )
-                    }
+                        if (caps.canViewTickets) {
+                            NavigationBarItem(
+                                icon = { Icon(Icons.AutoMirrored.Filled.List, contentDescription = "Tickets") },
+                                label = { Text("Tickets") },
+                                selected = false,
+                                onClick = { onOpenList("ALL") }
+                            )
+                        }
 
-                    if (caps.canAdminister) {
-                        NavigationBarItem(
-                            icon = { Icon(Icons.Filled.Settings, contentDescription = "Admin") },
-                            label = { Text("Admin") },
-                            selected = false,
-                            onClick = onAdmin
-                        )
+                        if (caps.canViewWorkload) {
+                            NavigationBarItem(
+                                icon = { Icon(Icons.Filled.DateRange, contentDescription = "Cargas") },
+                                label = { Text("Cargas") },
+                                selected = false,
+                                onClick = onWorkload
+                            )
+                        }
+
+                        if (caps.canAdminister) {
+                            NavigationBarItem(
+                                icon = { Icon(Icons.Filled.Settings, contentDescription = "Admin") },
+                                label = { Text("Admin") },
+                                selected = false,
+                                onClick = onAdmin
+                            )
+                        }
                     }
                 }
             }
